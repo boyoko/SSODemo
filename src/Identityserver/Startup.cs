@@ -36,6 +36,19 @@ namespace Identityserver
 
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
+
+
+            services.AddCors(options =>
+            {
+                // this defines a CORS policy called "default"
+                options.AddPolicy("default", policy =>
+                {
+                    policy.WithOrigins("https://localhost:5003")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
+            });
+
         }
 
         public void Configure(IApplicationBuilder app)
@@ -48,6 +61,8 @@ namespace Identityserver
             // uncomment if you want to add MVC
             app.UseStaticFiles();
             app.UseRouting();
+
+            app.UseCors("default");
 
             app.UseIdentityServer();
 
