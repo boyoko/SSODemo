@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Collections.Generic;
 
 namespace Identityserver
 {
@@ -41,9 +42,14 @@ namespace Identityserver
             services.AddCors(options =>
             {
                 // this defines a CORS policy called "default"
+
+                var list = new List<string>();
+                list.Add("https://localhost:5003");
+                list.Add("https://localhost:5004");
+
                 options.AddPolicy("default", policy =>
                 {
-                    policy.WithOrigins("https://localhost:5003")
+                    policy.WithOrigins(list.ToArray())
                         .AllowAnyHeader()
                         .AllowAnyMethod();
                 });

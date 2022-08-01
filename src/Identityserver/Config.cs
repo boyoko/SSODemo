@@ -83,6 +83,26 @@ namespace Identityserver
                         "api1"
                     }
                 },
+
+                // Js Client 2
+                new Client
+                {
+                    ClientId = "js2",
+                    ClientName = "js2 Client",
+                    AllowedGrantTypes = GrantTypes.Code,
+                    RequireClientSecret = false,
+
+                    RedirectUris =           { "https://localhost:5004/callback.html" },
+                    PostLogoutRedirectUris = { "https://localhost:5004/index.html" },
+                    AllowedCorsOrigins =     { "https://localhost:5004" },
+
+                    AllowedScopes =
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        "api1"
+                    }
+                },
             };
 
 
