@@ -17,6 +17,16 @@ document.getElementById("login").addEventListener("click", login, false);
 document.getElementById("api").addEventListener("click", api, false);
 document.getElementById("logout").addEventListener("click", logout, false);
 
+//var discovery = {
+//    RequireHttps = false
+//};
+
+//var policy = {
+//    Discovery: {
+//        RequireHttps: false
+//    }
+//};
+
 var config = {
     authority: "https://localhost:5001",
     client_id: "js",
@@ -24,6 +34,7 @@ var config = {
     response_type: "code",
     scope: "openid profile api1",
     post_logout_redirect_uri: "https://localhost:5003/index.html",
+    //policy: policy,
 };
 var mgr = new Oidc.UserManager(config);
 
